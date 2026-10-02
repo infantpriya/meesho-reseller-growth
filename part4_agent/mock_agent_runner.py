@@ -42,7 +42,9 @@ def get_previous_month(month):
     index = MONTH_ORDER.index(month)
 
     if index == 0:
-        raise ValueError("January does not have a previous month in this project.")
+        raise ValueError(
+            "January does not have a previous month in this project."
+        )
 
     return MONTH_ORDER[index - 1]
 
@@ -121,7 +123,11 @@ def run(month, previous_month_csv, current_month_csv):
     # ---------------------------------------------------------
     # 4. Select requested months
     # ---------------------------------------------------------
-    current_month_rows = get_month_rows(current_rows, month)
+    current_month_rows = get_month_rows(
+        current_rows,
+        month,
+    )
+
     previous_month_rows = get_month_rows(
         previous_rows,
         previous_month,
@@ -221,15 +227,16 @@ def run(month, previous_month_csv, current_month_csv):
             }
         )
 
+    # Suppressed categories are returned as category-name strings.
     suppressed_categories = [
-        {
-            "category": item["category"],
-            "mom_pct": item["mom_pct"],
-            "previous_revenue": item["previous_revenue"],
-            "current_revenue": item["current_revenue"],
-            "drafted": False,
-        }
+        item["category"]
         for item in suppressed
+    ]
+
+    # Escalated categories are also returned as category-name strings.
+    escalated_categories = [
+        item["category"]
+        for item in escalated
     ]
 
     # ---------------------------------------------------------
@@ -241,7 +248,7 @@ def run(month, previous_month_csv, current_month_csv):
         "validation_errors": [],
         "flagged_categories": drafted_categories,
         "suppressed_categories": suppressed_categories,
-        "escalated_categories": escalated,
+        "escalated_categories": escalated_categories,
         "action_taken": "drafted_and_held_for_approval",
     }
 
@@ -254,15 +261,16 @@ def main():
             "Usage: python part4_agent\\mock_agent_runner.py "
             "<month> <previous_month_csv> <current_month_csv>"
         )
-        print(
-            "Example:"
-        )
+
+        print("Example:")
+
         print(
             "python part4_agent\\mock_agent_runner.py "
             "May "
             "part1_sql\\output\\monthly_category_revenue.csv "
             "part1_sql\\output\\monthly_category_revenue.csv"
         )
+
         sys.exit(1)
 
     month = sys.argv[1]

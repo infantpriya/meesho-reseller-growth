@@ -27,17 +27,18 @@ The current run's validation result, calculated MoM values, flagged categories, 
 
 ## 4. Planner
 
-The agent executes these subtasks in order:
+The agent executes these subtasks in the following exact order:
 
-1. Load the monthly revenue feed and run `validate_feed`.
-2. If validation fails, perform a Hard Stop and report the validation errors.
-3. If validation succeeds, compute `mom_growth` for every category against the previous month.
-4. Run `is_flagged` on every category.
-5. Sort flagged categories by absolute MoM percentage in descending order.
-6. Draft messages for at most the top 3 flagged categories using the Part 3 narrative template.
-7. Record any remaining flagged categories as `suppressed, review manually` without drafting messages for them.
-8. Record any `escalate_exact_boundary` categories in `escalated_categories` without drafting a message.
-9. Emit one structured JSON object for the run.
+1. Load the monthly revenue feed.
+2. Run `validate_feed()`.
+3. If INVALID → Hard Stop.
+4. If VALID → compute `mom_growth()` for every category versus the previous month.
+5. Run `is_flagged()` on every category.
+6. Sort flagged categories by `abs(mom_pct)` descending.
+6b. Draft via the Part 3 template for at most the top 3.
+7. Log remaining flagged categories as suppressed and review manually.
+7b. Separately log exact-boundary categories into `escalated_categories`.
+8. Emit one structured JSON object.
 
 ## 5. Feedback Loop
 

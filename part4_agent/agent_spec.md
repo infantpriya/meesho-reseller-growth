@@ -38,7 +38,7 @@ The agent executes these subtasks in the following exact order:
 6b. Draft via the Part 3 template for at most the top 3.
 7. Log remaining flagged categories as suppressed and review manually.
 7b. Separately log exact-boundary categories into `escalated_categories`.
-9. Emit one structured JSON object.
+8. Emit one structured JSON object.
 
 ## 5. Feedback Loop
 

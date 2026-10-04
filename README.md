@@ -868,6 +868,17 @@ hard_stop
 - [x] Human approval
 - [x] One public GitHub repository
 
+## References
+
+Official Python standard-library documentation referenced during implementation:
+
+- Python `csv` module: https://docs.python.org/3/library/csv.html
+- Python `json` module: https://docs.python.org/3/library/json.html
+- Python `random` module: https://docs.python.org/3/library/random.html
+- Python `sqlite3` module: https://docs.python.org/3/library/sqlite3.html
+
+These references are documentation only; the capstone pipeline itself runs fully offline and requires no API keys or external services.
+
 ## Repository
 
 Public GitHub repository:

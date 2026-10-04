@@ -11,7 +11,7 @@ The agent uses the following project functions:
 - `validate_feed()` from `part2_engine/growth_engine.py`
 - `mom_growth()` from `part2_engine/growth_engine.py`
 - `is_flagged()` from `part2_engine/growth_engine.py`
-- The reusable narrative template defined in `part3_narrative/prompt_pack.md`
+- `fill_prompt()` from `part3_narrative/template_fill.py`, implementing the reusable Part 3 narrative template
 
 The agent does not re-implement the Part 2 growth functions.
 

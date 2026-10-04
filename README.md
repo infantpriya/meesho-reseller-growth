@@ -78,7 +78,8 @@ meesho-reseller-growth/
 ├── part3_narrative/
 │   ├── prompt_pack.md
 │   ├── narrative_report.md
-│   └── masking.py
+│   ├── masking.py
+│   └── template_fill.py
 │
 └── part4_agent/
     ├── agent_spec.md
@@ -299,6 +300,8 @@ Files:
 part3_narrative/prompt_pack.md
 part3_narrative/narrative_report.md
 part3_narrative/masking.py
+part3_narrative/template_fill.py
+`fill_prompt()` is the reusable deterministic template-fill function consumed directly by Part 4.
 ```
 
 The prompt pack contains four required sections:
